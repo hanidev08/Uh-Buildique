@@ -3,8 +3,7 @@ import useLocoScroll from "@/hooks/useLocoScroll";
 
 import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
-import { Work } from "@/sections/work";
-
+ 
 export default function Home() {
   useLocoScroll(true);
 
@@ -12,8 +11,7 @@ export default function Home() {
     <div id="main-container" data-scroll-container>
       <Header />
       <Hero />
-      {/* <Work/> */}
-    </div>
+     </div>
   );
 }
 
