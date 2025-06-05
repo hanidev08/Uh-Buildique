@@ -53,7 +53,9 @@ export const Hero = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: index === current ? 1 : 0 }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
-                  className="absolute inset-0 size-full object-cover"
+                  className={`image absolute inset-0 size-full object-cover ${
+                    isInViewImg ? "is-reveal" : ""
+                  }`}
                 />
               ))}
             </div>
