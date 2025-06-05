@@ -22,9 +22,11 @@ export const Hero = () => {
   const [current, setCurrent] = useState(0);
   const description = useRef(null);
   const imgRef = useRef(null);
+  const imgRefMobile = useRef(null);
 
   const isInView = useInView(description);
   const isInViewImg = useInView(imgRef);
+  const isInViewImgMobile = useInView(imgRefMobile);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,7 +46,10 @@ export const Hero = () => {
             </h1>
           </div>
           <div className="mt-5 flex items-center justify-center">
-            <div className=" relative w-[100vw] max-w-[1024px] aspect-[5/5]">
+            <div
+              ref={imgRefMobile}
+              className=" relative w-[100vw] max-w-[1024px] aspect-[5/5]"
+            >
               {images.map((src, index) => (
                 <motion.img
                   key={index}
@@ -54,7 +59,7 @@ export const Hero = () => {
                   animate={{ opacity: index === current ? 1 : 0 }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                   className={`image absolute inset-0 size-full object-cover ${
-                    isInViewImg ? "is-reveal" : ""
+                    isInViewImgMobile ? "is-reveal" : ""
                   }`}
                 />
               ))}
