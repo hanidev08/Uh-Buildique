@@ -1,0 +1,12 @@
+.divider {
+ 
+}
+.text {
+  font-size: clamp(25px, 10vw, 50px);
+  line-height: clamp(1, 1, 1);
+}
+
+.textOne {
+  font-size: clamp(27px, 9vw, 40px);
+  line-height: clamp(1, 1, 1);
+}

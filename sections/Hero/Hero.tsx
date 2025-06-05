@@ -1,5 +1,5 @@
 "use client";
- import "./style.scss";
+import "./style.scss";
 import img1 from "@/public/assets/img1.jpeg";
 import img2 from "@/public/assets/img2.jpeg";
 import img3 from "@/public/assets/img3.jpeg";
@@ -21,7 +21,10 @@ const phraseThree =
 export const Hero = () => {
   const [current, setCurrent] = useState(0);
   const description = useRef(null);
+  const imgRef = useRef(null);
+
   const isInView = useInView(description);
+  const isInViewImg = useInView(imgRef);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,7 +34,7 @@ export const Hero = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <section ref={description} data-scroll-section>
+    <section ref={description}>
       <div className="container relative md:h-[calc(100vh-72px)]">
         {/* For Mobile */}
         <div className=" md:hidden">
@@ -50,8 +53,7 @@ export const Hero = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: index === current ? 1 : 0 }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
-                  data-scroll
-                  className="image absolute inset-0 size-full object-cover"
+                  className="absolute inset-0 size-full object-cover"
                 />
               ))}
             </div>
@@ -69,7 +71,7 @@ export const Hero = () => {
           </div>
         </div>
         {/* For Desctop */}
-        <div className="hidden md:flex items-center h-full ">
+        <div className="hidden  md:flex items-end h-[97%] ">
           <div className=" w-full">
             <h1 className="desc uppercase tracking-tight md:max-w-[750px]">
               Designing Homes With
@@ -81,7 +83,10 @@ export const Hero = () => {
               <div className="flex items-center tracking-tight justify-end">
                 <div className="desc md:flex md:items-center uppercase gap-4 max-w-[760px]">
                   <span>
-                    <div className=" hidden md:flex relative w-[16vw] max-w-[300px] aspect-[6/5]  ">
+                    <div
+                      ref={imgRef}
+                      className=" hidden md:flex relative w-[16vw] max-w-[300px] aspect-[6/5]  "
+                    >
                       {images.map((src, index) => (
                         <motion.img
                           key={index}
@@ -90,8 +95,9 @@ export const Hero = () => {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: index === current ? 1 : 0 }}
                           transition={{ duration: 0.8, ease: "easeInOut" }}
-                          data-scroll
-                          className="image absolute inset-0 size-full object-cover"
+                          className={`image absolute inset-0 size-full object-cover ${
+                            isInViewImg ? "is-reveal" : ""
+                          }`}
                         />
                       ))}
                     </div>
@@ -152,8 +158,7 @@ export const Hero = () => {
 //                   initial={{ opacity: 0 }}
 //                   animate={{ opacity: index === current ? 1 : 0 }}
 //                   transition={{ duration: 0.8, ease: "easeInOut" }}
-//                   data-scroll
-//                   className="image absolute inset-0 size-full object-cover"
+// //                   className="image absolute inset-0 size-full object-cover"
 //                 />
 //               ))}
 //             </div>

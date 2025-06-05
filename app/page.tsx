@@ -1,17 +1,18 @@
 "use client";
-import useLocoScroll from "@/hooks/useLocoScroll";
 
 import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
- 
-export default function Home() {
-  useLocoScroll(true);
+import { OurTeam } from "@/sections/Our Team";
+import { Work } from "@/sections/work";
 
+export default function Home() {
   return (
-    <div id="main-container" data-scroll-container>
+    <div>
       <Header />
       <Hero />
-     </div>
+      <Work />
+      <OurTeam />
+    </div>
   );
 }
 

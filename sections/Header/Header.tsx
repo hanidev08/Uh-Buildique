@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="" data-scroll-section>
+    <header className="">
       <div className="container">
         <div className=" flex justify-between h-14 md:h-18 items-center">
           <div className="logo font-bold">Uh Buildique</div>

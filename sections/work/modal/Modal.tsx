@@ -12,7 +12,6 @@ type Props = {
     location: string;
     note: string;
     src: string | StaticImageData;
-    color: string;
   }[];
 };
 
@@ -87,39 +86,32 @@ export const Modal = ({ modal, projects }: Props) => {
         initial="initial"
         animate={active ? "enter" : "closed"}
         ref={modalContainer}
-        className="modalContainer"
+        className=" hidden md:flex h-[200px] w-[200px]  
+        items-center justify-center absolute overflow-hidden pointer-events-none"
       >
-        <div style={{ top: index * -100 + "%" }} className="modalSlider">
+        <div
+          style={{ top: index * -100 + "%" }}
+          className="modalSlider w-full h-full absolute"
+        >
           {projects.map((project, index) => {
-            const { src, color } = project;
+            const { src } = project;
             return (
               <div
-                className="modal"
+                className="relative h-full flex items-center justify-center"
                 key={index}
-                style={{ backgroundColor: color }}
               >
-                <Image src={src} width={200} height={0} alt="image" />
+                <Image
+                  src={src}
+                  width={200}
+                  height={0}
+                  alt="image"
+                  className=" h-[200px] object-cover"
+                />
               </div>
             );
           })}
         </div>
       </motion.div>
-      {/* <motion.div
-        ref={cursor}
-        className="cursor"
-        variants={scaleAnimation}
-        initial="initial"
-        animate={active ? "enter" : "closed"}
-      ></motion.div>
-      <motion.div
-        ref={cursorLabel}
-        className="cursorLabel"
-        variants={scaleAnimation}
-        initial="initial"
-        animate={active ? "enter" : "closed"}
-      >
-        View
-      </motion.div> */}
     </>
   );
 };
