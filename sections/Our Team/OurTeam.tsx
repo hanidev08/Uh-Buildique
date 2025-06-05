@@ -129,7 +129,8 @@ export const OurTeam = () => {
           <div
             key={img.id}
             id={img.id}
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] max-w-[300px] md:w-[20vw] md:max-w-[500px] aspect-[4/5] z-${img.zIndex}`}
+            style={{ zIndex: img.zIndex }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] max-w-[300px] md:w-[20vw] md:max-w-[500px] aspect-[4/5]"
           >
             <Image
               src={img.src}
