@@ -85,7 +85,7 @@ export const Work = () => {
   const [modal, setModal] = useState({ active: false, index: 0 });
 
   return (
-    <section className="relative">
+    <section className="relative overflow-hidden">
       <div className="container ">
         <div className="pt-12">
           <h1 className="work uppercase tracking-tight">featured Works</h1>

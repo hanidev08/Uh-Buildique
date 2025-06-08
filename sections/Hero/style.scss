@@ -1,4 +1,4 @@
-.desc {
+.descMobile {
   font-size: clamp(45px, 12vw, 109px);
   line-height: clamp(1, 1, 1);
 }
@@ -17,5 +17,12 @@
   transition: clip-path 2s cubic-bezier(0.77, 0, 0.175, 1);
   &.is-reveal {
     clip-path: inset(0% 0% 0% 0%);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .desc {
+    font-size: clamp(80px, 9vw, 109px);
+    line-height: clamp(1, 1, 1);
   }
 }

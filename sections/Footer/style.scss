@@ -1,0 +1,16 @@
+.header {
+  font-size: clamp(25px, 9vw, 43px);
+  line-height: clamp(1, 1, 1);
+}
+
+.heading {
+  font-size: clamp(30px, 9vw, 180px);
+  line-height: clamp(1, 1, 1);
+}
+
+@media (min-width: 500px) {
+  .header {
+    font-size: clamp(26px, 4vw, 52px);
+    line-height: 1.2;
+  }
+}

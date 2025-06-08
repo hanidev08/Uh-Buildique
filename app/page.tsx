@@ -1,5 +1,6 @@
 "use client";
 
+import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
 import { OurTeam } from "@/sections/Our Team";
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Work />
       <OurTeam />
+      <Footer />
     </div>
   );
 }

@@ -29,19 +29,19 @@ export const Hero = () => {
   const isInViewImgMobile = useInView(imgRefMobile);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = setInterval(() => { 
       setCurrent((prev) => (prev + 1) % images.length);
     }, 3000);
 
     return () => clearInterval(interval);
   }, []);
   return (
-    <section ref={description}>
+    <section ref={description} >
       <div className="container relative md:h-[calc(100vh-72px)]">
         {/* For Mobile */}
         <div className=" md:hidden">
           <div className=" mt-5">
-            <h1 className="desc uppercase tracking-tight">
+            <h1 className="descMobile uppercase tracking-tight">
               Designing Homes With People At Heart
             </h1>
           </div>
@@ -78,8 +78,8 @@ export const Hero = () => {
           </div>
         </div>
         {/* For Desctop */}
-        <div className="hidden  md:flex items-end h-[97%] ">
-          <div className=" w-full">
+        <div className="hidden md:flex items-end h-[100%] ">
+          <div className="w-full flex flex-col gap-16">
             <h1 className="desc uppercase tracking-tight md:max-w-[750px]">
               Designing Homes With
             </h1>
