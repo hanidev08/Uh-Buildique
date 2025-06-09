@@ -1,7 +1,7 @@
 "use client";
 
+import { About } from "@/sections/About";
 import { Footer } from "@/sections/Footer";
-import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
 import { OurTeam } from "@/sections/Our Team";
 import { Work } from "@/sections/work";
@@ -9,8 +9,8 @@ import { Work } from "@/sections/work";
 export default function Home() {
   return (
     <div>
-      <Header />
       <Hero />
+      <About />
       <Work />
       <OurTeam />
       <Footer />

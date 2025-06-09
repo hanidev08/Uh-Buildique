@@ -85,6 +85,19 @@ export const Header = () => {
   const isInView = useInView(description, { once: false });
   const shouldAnimate = isActive && isInView;
 
+  useEffect(() => {
+    if (isActive) {
+      document.body.style.overflow = "hidden"; // يمنع التمرير
+    } else {
+      document.body.style.overflow = ""; // يعيد الوضع الطبيعي
+    }
+
+    // تأكد من تنظيف التأثير إذا خرجت من المكون
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isActive]);
+
   return (
     <motion.header
       variants={{
@@ -94,7 +107,6 @@ export const Header = () => {
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className=" sticky top-0 z-50"
-      id="top"
     >
       <div
         ref={navScope}

@@ -19,7 +19,7 @@ export const Footer = () => {
       <div className=" container">
         <div className=" flex flex-col gap-4 md:flex-row sm:justify-between py-12 md:py-16">
           <h1 className="header">Work with us</h1>
-          <h1 className="header">work@vucko.co</h1>
+          <h1 className="header">work@Uh-Buildique.co</h1>
         </div>
         <div className=" border-t border-gray-400 flex gap-20 max-sm:text-xl py-16 tracking-wide">
           <ul className="flex flex-col md:gap-1">
@@ -45,7 +45,9 @@ export const Footer = () => {
             Back top ↑
           </Link>
           <h1 className="heading font-bold uppercase">Uh-Buildique</h1>
-          <div className="tracking-tight text-xl">Copyright © Vucko 2023</div>
+          <div className="tracking-tight text-xl">
+            Copyright © Uh-Buildique 2025
+          </div>
         </div>
         <div className=" mt-46 hidden md:flex items-end justify-between ">
           <h1 className="heading font-bold uppercase">Uh-Buildique</h1>
@@ -56,7 +58,9 @@ export const Footer = () => {
           >
             Back top ↑
           </Link>
-          <div className="tracking-tight text-xl">Copyright © Vucko 2023</div>
+          <div className="tracking-tight text-xl">
+            Copyright © Uh-Buildique 2025
+          </div>
         </div>
       </div>
     </footer>

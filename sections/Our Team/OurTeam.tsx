@@ -4,10 +4,10 @@ import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import img1 from "@/public/assets/img1.jpeg";
-import img2 from "@/public/assets/img2.jpeg";
-import img3 from "@/public/assets/img3.jpeg";
-import img4 from "@/public/assets/img4.jpeg";
+import img1 from "@/public/assets/img5.jpeg";
+import img2 from "@/public/assets/img6.jpeg";
+import img3 from "@/public/assets/img7.jpeg";
+import img4 from "@/public/assets/img8.jpeg";
 import "./style.scss";
 
 export const OurTeam = () => {
@@ -20,32 +20,32 @@ export const OurTeam = () => {
       src: img1,
       alt: "img1",
       zIndex: 10,
-      name: "Yaoré",
-      title: "Violon",
+      name: "Marina Frost",
+      title: "Office Manager",
     },
     {
       id: "img2",
       src: img2,
       alt: "img2",
       zIndex: 20,
-      name: "Élodie",
-      title: "Piano",
+      name: "Renee Smith",
+      title: "Architect",
     },
     {
       id: "img3",
       src: img3,
       alt: "img3",
       zIndex: 30,
-      name: "Moussa",
-      title: "Guitare",
+      name: "Hannah Bishop",
+      title: "Architect",
     },
     {
       id: "img4",
       src: img4,
       alt: "img4",
       zIndex: 40,
-      name: "Sofia",
-      title: "Chant",
+      name: "Danny Cole",
+      title: "Architect",
     },
   ];
 

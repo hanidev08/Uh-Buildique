@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Header } from "@/sections/Header";
 
 const ppneuemontreal = localFont({
   src: [
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body
         className={`${ppneuemontreal.variable} antialiased font-ppneuemontreal`}
       >
+        <Header/>
         {children}
       </body>
     </html>
