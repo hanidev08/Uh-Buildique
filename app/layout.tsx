@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { Header } from "@/sections/Header";
+import { ViewTransitions } from "next-view-transitions";
 
 const ppneuemontreal = localFont({
   src: [
@@ -30,13 +31,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${ppneuemontreal.variable} antialiased font-ppneuemontreal`}
-      >
-        <Header/>
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body
+          className={`${ppneuemontreal.variable} antialiased font-ppneuemontreal`}
+        >
+          <Header />
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

@@ -35,8 +35,6 @@ export const Modal = ({ modal, projects }: Props) => {
   const { active, index } = modal;
   console.log(index);
   const modalContainer = useRef(null);
-  const cursor = useRef(null);
-  const cursorLabel = useRef(null);
 
   useEffect(() => {
     //Move Container
@@ -49,33 +47,10 @@ export const Modal = ({ modal, projects }: Props) => {
       ease: "power3",
     });
 
-    //Move cursor
-    const xMoveCursor = gsap.quickTo(cursor.current, "left", {
-      duration: 0.5,
-      ease: "power3",
-    });
-    const yMoveCursor = gsap.quickTo(cursor.current, "top", {
-      duration: 0.5,
-      ease: "power3",
-    });
-    //Move cursor label
-    const xMoveCursorLabel = gsap.quickTo(cursorLabel.current, "left", {
-      duration: 0.45,
-      ease: "power3",
-    });
-    const yMoveCursorLabel = gsap.quickTo(cursorLabel.current, "top", {
-      duration: 0.45,
-      ease: "power3",
-    });
-
     window.addEventListener("mousemove", (e) => {
       const { clientX, clientY } = e;
       xMoveContainer(clientX);
       yMoveContainer(clientY);
-      xMoveCursor(clientX);
-      yMoveCursor(clientY);
-      xMoveCursorLabel(clientX);
-      yMoveCursorLabel(clientY);
     });
   }, []);
 
@@ -86,7 +61,7 @@ export const Modal = ({ modal, projects }: Props) => {
         initial="initial"
         animate={active ? "enter" : "closed"}
         ref={modalContainer}
-        className=" hidden md:flex h-[200px] w-[200px]  
+        className=" hidden md:flex h-[150px] w-[150px]  
         items-center justify-center absolute overflow-hidden pointer-events-none"
       >
         <div
@@ -105,7 +80,7 @@ export const Modal = ({ modal, projects }: Props) => {
                   width={200}
                   height={0}
                   alt="image"
-                  className=" h-[200px] object-cover"
+                  className=" h-[150px] object-cover"
                 />
               </div>
             );

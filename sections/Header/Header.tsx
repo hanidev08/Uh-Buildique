@@ -10,6 +10,8 @@ import {
 import { useEffect, useRef, useState } from "react";
 import "./style.scss";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 const navItems = [
   {
     label: "HOME",
@@ -24,12 +26,8 @@ const navItems = [
     href: "/studio",
   },
   {
-    label: "PROCESS",
+    label: "CONTACT",
     href: "/process",
-  },
-  {
-    label: "GALLERY",
-    href: "/gallery",
   },
 ];
 
@@ -48,6 +46,7 @@ const slideUp = {
 };
 
 export const Header = () => {
+  const pathname = usePathname();
   const { scrollY } = useScroll();
   const [isActive, setIsActive] = useState(false);
   const [navScope, navAnimate] = useAnimate();
@@ -112,67 +111,60 @@ export const Header = () => {
         ref={navScope}
         className=" fixed top-0 left-0 right-0 w-full h-0 bg-black z-10 overflow-hidden"
       >
-        <div className="container relative h-full flex items-center">
-          <div className=" h-1/3 flex flex-col gap-38">
-            <nav ref={description} className=" flex justify-center flex-col">
-              {navItems.map(({ label }) => (
-                <div
-                  key={label}
-                  className="menu text-white relative flex flex-col overflow-hidden"
-                >
-                  <motion.span
-                    variants={slideUp}
-                    initial="initial"
-                    animate={shouldAnimate ? "open" : "closed"}
-                  >
-                    {label}
-                  </motion.span>
-                </div>
-              ))}
-            </nav>
-            <div className=" uppercase text-sm text-white flex flex-col gap-8">
-              <div className=" uppercase text-sm text-white flex relative overflow-hidden">
+        <div className="container relative h-full py-2 flex flex-col justify-between items-start">
+          <div></div>
+          <nav ref={description} className="flex justify-center flex-col">
+            {navItems.map(({ label, href }) => (
+              <Link
+                href={href}
+                key={label}
+                onClick={() => {
+                  setIsActive(false);
+                }}
+                className="menu text-white relative flex flex-col overflow-hidden"
+              >
                 <motion.span
                   variants={slideUp}
                   initial="initial"
                   animate={shouldAnimate ? "open" : "closed"}
                 >
-                  Instgram
+                  {label}
                 </motion.span>
-              </div>
-              <div>
-                <div className=" flex relative overflow-hidden">
-                  <motion.span
-                    variants={slideUp}
-                    initial="initial"
-                    animate={shouldAnimate ? "open" : "closed"}
-                  >
-                    Privacy Policy
-                  </motion.span>
-                </div>
-                <div className=" flex relative overflow-hidden">
-                  <motion.span
-                    variants={slideUp}
-                    initial="initial"
-                    animate={shouldAnimate ? "open" : "closed"}
-                  >
-                    Terms of Service
-                  </motion.span>
-                </div>
-              </div>
+              </Link>
+            ))}
+          </nav>
+          <div className=" uppercase text-sm text-white flex flex-col gap-8">
+            <div className=" uppercase text-sm text-white flex relative overflow-hidden">
+              <motion.span
+                variants={slideUp}
+                initial="initial"
+                animate={shouldAnimate ? "open" : "closed"}
+              >
+                Instgram
+              </motion.span>
             </div>
           </div>
         </div>
       </div>
       <div className="container">
         <div className=" flex justify-between h-14 md:h-18 items-center">
-          <div className="logo font-bold z-10">
-            {isActive ? (
-              <div className=" text-white"> Uh Buildique</div>
-            ) : (
-              <div> Uh Buildique</div>
-            )}
-          </div>
+          {pathname === "/" ? (
+            <div className="logo font-bold z-10">
+              {isActive ? (
+                <Link href="/" className=" text-white">
+                  Uh Buildique
+                </Link>
+              ) : (
+                <Link href="/" className=" mix-blend-difference">
+                  Uh Buildique
+                </Link>
+              )}
+            </div>
+          ) : (
+            <Link href="/" className=" uppercase">
+              Back
+            </Link>
+          )}
           <div
             className="md:hidden z-10"
             onClick={() => {

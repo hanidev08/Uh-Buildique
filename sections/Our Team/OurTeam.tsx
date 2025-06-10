@@ -114,7 +114,10 @@ export const OurTeam = () => {
       </div>
 
       {/* Names */}
-      <div className="flex bg-white mt-2 flex-col md:flex-row w-[97%] mx-auto justify-between h-[50%] md:h-[70%] items-center">
+      <div
+        className="flex bg-white mt-2 flex-col md:flex-row w-[97%] mx-auto 
+      justify-between h-[54%] sm:h-[60%] md:h-[70%] items-center"
+      >
         <h1 className="textOne uppercase font-bold mix-blend-difference text-white z-50">
           {imageData[activeImage - 1]?.name}
         </h1>
@@ -130,7 +133,8 @@ export const OurTeam = () => {
             key={img.id}
             id={img.id}
             style={{ zIndex: img.zIndex }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] max-w-[300px] md:w-[20vw] md:max-w-[500px] aspect-[4/5]"
+            className="absolute top-1/2 sm:top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 
+            w-[60vw] max-w-[300px]  md:w-[20vw] md:max-w-[500px] aspect-[4/5]"
           >
             <Image
               src={img.src}

@@ -4,8 +4,11 @@ import img2 from "@/public/assets/img2.jpeg";
 import img3 from "@/public/assets/img3.jpeg";
 import img4 from "@/public/assets/img4.jpeg";
 import "./style.scss";
+import { useTransitionRouter } from "next-view-transitions";
 
 import { Modal } from "./modal";
+import { sampleData } from "@/sampleData";
+import Link from "next/link";
 
 export const Data = [
   {
@@ -80,12 +83,12 @@ export const Data = [
   },
 ];
 
-
 export const Work = () => {
+  const router = useTransitionRouter();
   const [modal, setModal] = useState({ active: false, index: 0 });
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-x-clip md:h-screen">
       <div className="container ">
         <div className="pt-12">
           <h1 className="work uppercase tracking-tight">featured Works</h1>
@@ -94,8 +97,15 @@ export const Work = () => {
       </div>
       <div className="flex items-center justify-center">
         <div className="flex flex-col w-full">
-          {Data.map((item, index) => (
-            <ul
+          {sampleData.map((item, index) => (
+            <Link
+              href={item.slug}
+              onClick={(e) => {
+                e.preventDefault();
+                router.push(item.slug, {
+                  onTransitionReady: pageAnimation,
+                });
+              }}
               onMouseEnter={() => {
                 setModal({ active: true, index });
               }}
@@ -103,20 +113,62 @@ export const Work = () => {
                 setModal({ active: false, index });
               }}
               key={index}
-              className=" cursor-pointer px-8 py-2 flex flex-col md:flex-row md:justify-between md:items-start
+              className=" cursor-pointer px-8 py-2 flex flex-col
+               md:flex-row md:justify-between md:items-start
                w-full border-t last:border-b border-black uppercase text-sm md:text-[12px]"
             >
-              <li className="md:w-1/6">{item.date}</li>
-              <li className="md:w-3/6">{item.title}</li>
-              <div className=" max-md:flex max-md:justify-between max-md:mt-4 max-md:w-full flex justify-between w-1/2">
-                <li className="">{item.location}</li>
-                <li className="">{item.note}</li>
+              <div className="md:w-1/6">{item.date}</div>
+              <div className="md:w-3/6">{item.title}</div>
+              <div
+                className=" max-md:flex max-md:justify-between max-md:mt-4 max-md:w-full
+               flex justify-between w-1/2"
+              >
+                <div className="">{item.location}</div>
+                <div className="">{item.note}</div>
               </div>
-            </ul>
+            </Link>
           ))}
         </div>
-        <Modal modal={modal} projects={Data} />
+        <Modal modal={modal} projects={sampleData} />
       </div>
     </section>
+  );
+};
+
+export const pageAnimation = () => {
+  document.documentElement.animate(
+    [
+      {
+        opacity: 1,
+        transform: "translateY(0)",
+      },
+      {
+        opacity: 0.2,
+        transform: "translateY(-35%)",
+      },
+    ],
+    {
+      duration: 1500,
+      easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+      fill: "forwards",
+      pseudoElement: "::view-transition-old(root)",
+    }
+  );
+
+  document.documentElement.animate(
+    [
+      {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+      },
+      {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+      },
+    ],
+    {
+      duration: 1500,
+      easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+      fill: "forwards",
+      pseudoElement: "::view-transition-new(root)",
+    }
   );
 };
